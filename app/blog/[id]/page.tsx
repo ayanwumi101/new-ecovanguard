@@ -162,14 +162,14 @@ const blogData: { [key: string]: any } = {
 };
 
 interface BlogPostProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-export default function BlogPost({ params }: BlogPostProps) {
-  const postId = params.id;
-  const post = blogData[postId];
+export default async function BlogPost({ params }: BlogPostProps) {
+  const { id } = await params;
+  const post = blogData[id];
 
   if (!post) {
     notFound();

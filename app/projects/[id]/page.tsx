@@ -172,13 +172,14 @@ const extendedProjectData: { [key: number]: any } = {
 };
 
 interface ProjectDetailProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-export default function ProjectDetail({ params }: ProjectDetailProps) {
-  const projectId = parseInt(params.id);
+export default async function ProjectDetail({ params }: ProjectDetailProps) {
+  const { id } = await params;
+  const projectId = parseInt(id);
 
   // Find the project from the centralized data
   const baseProject = projects.find((p) => p.id === projectId);
