@@ -31,6 +31,39 @@ export const projects = [
     date: '2024',
     status: 'Expanding',
     impact: '100,000+ trees planted'
+  },
+    {
+    id: 4,
+    title: 'Clean Water Initiative',
+    description: 'Providing access to clean drinking water through well drilling and water purification systems in rural communities.',
+    image: 'https://images.pexels.com/photos/1292241/pexels-photo-1292241.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    category: 'Water',
+    location: 'Sub-Saharan Africa',
+    date: '2023',
+    status: 'Active',
+    impact: '25,000+ people served'
+  },
+  {
+    id: 5,
+    title: 'Sustainable Agriculture Program',
+    description: 'Teaching farmers sustainable farming techniques to increase yields while protecting the environment.',
+    image: 'https://images.pexels.com/photos/2518861/pexels-photo-2518861.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    category: 'Agriculture',
+    location: 'Latin America',
+    date: '2023',
+    status: 'Completed',
+    impact: '500+ farmers trained'
+  },
+  {
+    id: 6,
+    title: 'Wildlife Protection Network',
+    description: 'Establishing protected areas and anti-poaching measures to preserve endangered species and their habitats.',
+    image: 'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    category: 'Wildlife',
+    location: 'East Africa',
+    date: '2023',
+    status: 'Active',
+    impact: '10+ species protected'
   }
 ];
 

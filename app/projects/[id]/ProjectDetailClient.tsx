@@ -7,7 +7,7 @@ import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
+// import { Progress } from '@/components/ui/progress';
 
 interface ProjectDetailClientProps {
   project: any;
@@ -86,7 +86,7 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                   {project.progress}%
                 </div>
                 <div className="text-gray-600">Progress</div>
-                <Progress value={project.progress} className="mt-2" />
+                {/* <Progress value={project.progress} className="mt-2" /> */}
               </div>
             </ScrollReveal>
             
