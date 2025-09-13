@@ -9,18 +9,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import { projects } from '@/lib/data/projects';
 
-// This would typically come from an API or database
-const projectsData: { [key: string]: any } = {
-  '1': {
-    title: 'Solar Villages Initiative',
-    description: 'Bringing clean, renewable energy to remote communities across Southeast Asia through comprehensive solar panel installations, training programs, and sustainable maintenance systems.',
-    image: 'https://images.pexels.com/photos/2800832/pexels-photo-2800832.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-    category: 'Clean Energy',
-    location: 'Southeast Asia',
-    date: '2024',
-    status: 'Active',
-    impact: '50+ communities served',
+// Extended project data for detailed view
+const extendedProjectData: { [key: number]: any } = {
+  1: {
     progress: 75,
     budget: '$2.5M',
     beneficiaries: '15,000+',
@@ -43,15 +36,7 @@ const projectsData: { [key: string]: any } = {
       'https://images.pexels.com/photos/2800549/pexels-photo-2800549.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
     ]
   },
-  '2': {
-    title: 'Ocean Cleanup Program',
-    description: 'A comprehensive initiative to remove plastic waste from our oceans using innovative cleanup technologies while preventing further pollution through community education and policy advocacy.',
-    image: 'https://images.pexels.com/photos/1076758/pexels-photo-1076758.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-    category: 'Conservation',
-    location: 'Pacific Ocean',
-    date: '2024',
-    status: 'Active',
-    impact: '500+ tons removed',
+  2: {
     progress: 60,
     budget: '$3.2M',
     beneficiaries: '50,000+',
@@ -73,16 +58,41 @@ const projectsData: { [key: string]: any } = {
       'https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
       'https://images.pexels.com/photos/2583852/pexels-photo-2583852.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
     ]
+  },
+  3: {
+    progress: 85,
+    budget: '$1.8M',
+    beneficiaries: '250,000+',
+    partners: ['World Wildlife Fund', 'Urban Development Council', 'Green Cities Initiative'],
+    objectives: [
+      'Plant 100,000 native trees in urban areas',
+      'Create 50 new green spaces and parks',
+      'Improve air quality by 30% in target areas',
+      'Engage 10,000 community volunteers'
+    ],
+    achievements: [
+      'Planted 85,000 trees across 25 cities',
+      'Created 42 new parks and green spaces',
+      'Improved air quality by 25% in participating areas',
+      'Engaged 8,500 community volunteers'
+    ],
+    gallery: [
+      'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+    ]
   }
-  // Add more projects as needed
 };
 
 export default function ProjectDetail() {
   const params = useParams();
-  const projectId = params.id as string;
-  const project = projectsData[projectId];
+  const projectId = parseInt(params.id as string);
+  
+  // Find the project from the centralized data
+  const baseProject = projects.find(p => p.id === projectId);
+  const extendedProject = extendedProjectData[projectId];
 
-  if (!project) {
+  if (!baseProject || !extendedProject) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -94,6 +104,12 @@ export default function ProjectDetail() {
       </div>
     );
   }
+
+  // Combine base and extended project data
+  const project = {
+    ...baseProject,
+    ...extendedProject
+  };
 
   return (
     <div className="overflow-hidden">
@@ -149,7 +165,7 @@ export default function ProjectDetail() {
                 </div>
                 <div className="flex items-center">
                   <Users size={18} className="mr-2" />
-                  {project.beneficiaries} beneficiaries
+                  {project.beneficiaries || 'Multiple'} beneficiaries
                 </div>
               </div>
             </div>
