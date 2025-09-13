@@ -8,7 +8,7 @@ import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
+// import { Progress } from '@/components/ui/progress';
 import { projects } from '@/lib/data/projects';
 
 // Extended project data for detailed view
@@ -183,7 +183,12 @@ export default function ProjectDetail() {
                   {project.progress}%
                 </div>
                 <div className="text-gray-600">Progress</div>
-                <Progress value={project.progress} className="mt-2" />
+                <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
+                  <div 
+                    className="bg-emerald-600 h-2 rounded-full transition-all" 
+                    style={{ width: `${project.progress}%` }}
+                  ></div>
+                </div>
               </div>
             </ScrollReveal>
             
